@@ -1,4 +1,5 @@
 import requests
+import os
 
 try:
     from tqdm import tqdm
@@ -11,6 +12,9 @@ try:
     input = raw_input
 except NameError:
     pass
+
+
+THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 
 download_dict = {
     '1) Kuzushiji-MNIST (10 classes, 28x28, 70k examples)': {
@@ -42,7 +46,10 @@ download_dict = {
 # Download a list of files
 def download_list(url_list):
     for url in url_list:
-        path = url.split('/')[-1]
+        path = os.path.join(THIS_DIR, url.split('/')[-1])
+        if os.path.isfile(path):
+            continue
+        
         r = requests.get(url, stream=True)
         with open(path, 'wb') as f:
             total_length = int(r.headers.get('content-length'))
@@ -52,6 +59,17 @@ def download_list(url_list):
                 if chunk:
                     f.write(chunk)
     print('All dataset files downloaded!')
+
+def run():
+    keys = sorted(download_dict.keys())  
+
+    selected = keys[1] # select the 49 dataset
+
+    next_level = download_dict[selected]
+    first_key = list(next_level.keys())[0]
+
+    download_list(next_level[first_key])
+        
 
 # Ask the user about which path to take down the dict
 def traverse_dict(d):
@@ -77,4 +95,5 @@ def traverse_dict(d):
     else:
         traverse_dict(next_level)     # Otherwise, repeat with the next level
 
-traverse_dict(download_dict)
+if __name__ == '__main__':
+    traverse_dict(download_dict)
