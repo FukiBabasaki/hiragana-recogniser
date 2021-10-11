@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hiragana Recogniser App</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='draw.js') }}"></script>
+
+</head>
+    <header>
+      Hiragana Recogniser
+    </header>
+
+<body>
+    <form id = "myForm" action="{{ url_for('app.predict')}}" method="POST" enctype="multipart/form-data">
+        
+      <canvas id="canvas", name ="draw" width="420" height="420">
+        <script type="text/javascript">
+            $(document).ready(function() {
+                drawCanvas();
+            });
+        </script>
+        </canvas>
+        <input type="hidden" id = 'url' name="url" value="">
+        <input type="submit" id = 'predict' value="Predict" onclick="return save();">
+    </form>
+    
+    </body>
+</html>
