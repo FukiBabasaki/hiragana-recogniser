@@ -7,6 +7,8 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 
+size = [64,64]
+
 bp = Blueprint('app', __name__, url_prefix='/')
 
 @bp.route('/', methods = ['GET'])
@@ -30,12 +32,16 @@ def predict():
 
         image = Image.fromarray(image).convert('L')
 
-        #Make the image 28x28
-        image = image.resize((28, 28), Image.ANTIALIAS)
+        # resize the image
+        image = image.resize((size[0], size[1]), Image.ANTIALIAS)
         vect = np.asarray(image, dtype='uint8')
         vect = (vect.flatten())
-        vect = vect.reshape(1, 28, 28)
+        vect = vect.reshape(1, size[0], size[1])
 
         final_pred = predict_utils.predict(vect)
     
-    return render_template('results.html', prediction=final_pred)
+    return render_template('draw.html', prediction=final_pred)
+
+@bp.route('/clear', methods=['GET'])
+def clear():
+    return render_template('draw.html', prediction=None)
