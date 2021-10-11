@@ -5,25 +5,37 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='draw.js') }}"></script>
+  </head>
 
-</head>
-    <header>
-      Hiragana Recogniser
-    </header>
+  <header>
+    <h1>Hiragana Recogniser</h1>
+    Convolutional Neural Network is trained on a dataset <a href="http://etlcdb.db.aist.go.jp/specification-of-etl-8">here</a>.
+    The model classifies 70 Japanese characters with more than ... accuracy.
+  </header>
 
-<body>
+  <body>
     <form id = "myForm" action="{{ url_for('app.predict')}}" method="POST" enctype="multipart/form-data">
-        
       <canvas id="canvas", name ="draw" width="420" height="420">
         <script type="text/javascript">
-            $(document).ready(function() {
-                drawCanvas();
-            });
+              $(document).ready(function() {
+                  drawCanvas();
+              });
         </script>
-        </canvas>
-        <input type="hidden" id = 'url' name="url" value="">
-        <input type="submit" id = 'predict' value="Predict" onclick="return save();">
+      </canvas>
+      <input type="hidden" id = 'url' name="url" value="">
+
+      <div id = "btn-div">
+        <input type="submit" class = "button" value="Predict" onclick="return save();">
+      </div>
+
     </form>
-    
-    </body>
+
+    {% if prediction %}
+    <h2>Looks like {{ prediction }} ! </h2>
+    {%else%}
+    <h2>Nothing to predict !</h2>
+    {%endif%}
+
+  </body>
+  <div class="footer">Footer</div>
 </html>
