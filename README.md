@@ -21,6 +21,16 @@ Live is coming soon...
 
 - Dropout layer is also applied to reduce overfitting.
 - Used Adam optimizer with default learning rate and beta values.
+- Applied early stopping for when test validation score doesn't improve for 3 epochs in a row.
+- Train data are augmented for better generalisation. (applied rotation and zooming)
+
+| Feature           | [Model V1](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classification.ipynb) | Model V2 | [Model V3](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classificationV2.ipynb) |
+| ----------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
+| Test Accuracy     | <= 90%                                                       | <= 98%   | <=  98.88%                                                   |
+| Dataset           | Kuzushiji MNIST                                              | ELT-8    | ELT-8                                                        |
+| Data Augmentation | No                                                           | No       | Yes                                                          |
+
+
 
 ## Future work
 
@@ -29,7 +39,17 @@ Live is coming soon...
 
 ## Datasets
 
-### [For model v1](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classification.ipynb) 
+### Primary
+
+**Dataset**: [ELT-8: ELTDB](http://etlcdb.db.aist.go.jp/specification-of-etl-8)
+
+**Citation**: 森俊二、山本和彦、山田博三、斉藤泰一: “手書教育漢字のデータベースについて”, 「電総研彙報」, Vol.43, Nos.11&12, pp.752–773 (1979-11&12).
+
+**Description:** Classification of handwritten Japanese character, 72 classes (五十音順).
+
+**Training & Testing:** 11.5k 128x127 instances.
+
+### Secondary 
 
 **Dataset**: [Kuzushiji MNIST](https://github.com/rois-codh/kmnist)
 
@@ -43,14 +63,3 @@ Live is coming soon...
 
 - This dataset did not work well as each instance was only 28 x 28 pixels image and this app takes 400 x 400 pixels image of handwritten Hiragana from the user. Resizing from 400 x 400 to 28 x 28 seems to lose significant amount of information.
 - Hence, my model performed reasonably well on the dataset (achieving over 90% accuracy on test set) but performance on the app wasn't great.
-
-### [For model v2](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classificationV2.ipynb)
-
-**Dataset**: [ELT-8: ELTDB](http://etlcdb.db.aist.go.jp/specification-of-etl-8)
-
-**Citation**: 森俊二、山本和彦、山田博三、斉藤泰一: “手書教育漢字のデータベースについて”, 「電総研彙報」, Vol.43, Nos.11&12, pp.752–773 (1979-11&12).
-
-**Description:** Classification of handwritten Japanese character, 72 classes (五十音順).
-
-**Training & Testing:** 11.5k 128x127 instances.
-
