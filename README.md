@@ -5,19 +5,19 @@ Live is coming soon...
 
 ## Model description
 
-| Type                     | Size      | Activation |
-| ------------------------ | --------- | ---------- |
-| Max Pooling              | 32 x 32   | ReLU       |
-| Convolution              | 64 x 64   | ReLU       |
-| Convolution              | 32 x 32   | ReLU       |
-| Convolution              | 32 x 32   | ReLU       |
-| Max Pooling              | 16 x 16   | ReLU       |
-| Convolution              | 16 x 16   | ReLU       |
-| Convolution              | 16 x 16   | ReLU       |
-| Max Pooling              | 8 x 8     | ReLU       |
-| Fully Connected          | 128 (256) | ReLU       |
-| Fully Connected          | 64 (128)  | ReLU       |
-| Fully Connected (output) | 70        | softmax    |
+| Type                     | Size    | Activation |
+| ------------------------ | ------- | ---------- |
+| Convolution              | 64 x 64 | ReLU       |
+| Max Pooling              | 32 x 32 | ReLU       |
+| Convolution              | 32 x 32 | ReLU       |
+| Convolution              | 32 x 32 | ReLU       |
+| Max Pooling              | 16 x 16 | ReLU       |
+| Convolution              | 16 x 16 | ReLU       |
+| Convolution              | 16 x 16 | ReLU       |
+| Max Pooling              | 8 x 8   | ReLU       |
+| Fully Connected          | 256     | ReLU       |
+| Fully Connected          | 128     | ReLU       |
+| Fully Connected (output) | 70      | softmax    |
 
 - Dropout layer is also applied to reduce overfitting.
 - Used Adam optimizer with default learning rate and beta values.
@@ -30,7 +30,7 @@ Live is coming soon...
 | Dataset           | Kuzushiji MNIST                                              | ELT-8    | ELT-8                                                        |
 | Data Augmentation | No                                                           | No       | Yes                                                          |
 
-
+Although test accuracy doesn't really differ between model with augmented images and normal images, the performance on predicting user input's character seems to drastically improve. This is partially because the model is more flexible to how the character is written.
 
 ## Future work
 
