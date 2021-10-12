@@ -10,9 +10,8 @@ var curColor = "#000000";
     - Preparing the Canvas : Basic functions
 **/
 function drawCanvas() {
-
     canvas = document.getElementById('canvas');
-    context = document.getElementById('canvas').getContext("2d");
+    context = canvas.getContext("2d");
 
     $('#canvas').mousedown(function (e) {
         var mouseX = e.pageX - this.offsetLeft;
@@ -54,16 +53,24 @@ function redraw() {
     context.lineWidth = 3;
     for (var i = 0; i < clickX.length; i++) {
         context.beginPath();
-    if (clickDrag[i] && i) {
-        context.moveTo(clickX[i - 1], clickY[i - 1]);
-    } else {
-        context.moveTo(clickX[i] - 1, clickY[i]);
+        if (clickDrag[i] && i) {
+            context.moveTo(clickX[i - 1], clickY[i - 1]);
+        } else {
+            context.moveTo(clickX[i] - 1, clickY[i]);
+        }
+        context.lineTo(clickX[i], clickY[i]);
+        context.closePath();
+        context.stroke();
     }
-    context.lineTo(clickX[i], clickY[i]);
-    context.closePath();
-    context.stroke();
 }
+
+function clearDraw() {
+    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+    clickX = new Array();
+    clickY = new Array();
+    clickDrag = new Array();
 }
+
 
 /**
     - Encodes the image into a base 64 string.
@@ -75,4 +82,29 @@ function save() {
     image.id = "pic";
     image.src = canvas.toDataURL();
     url.value = image.src;
+
+    var hiragana = document.getElementById("hiragana");
+
+    $.ajax({
+        type: "POST",
+        url: "/_predict",
+        data: JSON.stringify(url.value),
+        contentType: "application/json", 
+        dataType: 'json',
+        success: function(result) {
+            hiragana.innerHTML = "Predicted " + result.result +" !";
+
+            ul = document.getElementById('conf-list');
+            ul.innerHTML = "";
+            
+            topFive = result.top_five;
+            topFive.forEach(
+                function(item) {
+                    let li = document.createElement('li');
+                    ul.appendChild(li)
+                    li.innerHTML += item;
+                }
+            )
+        }
+    });
 }

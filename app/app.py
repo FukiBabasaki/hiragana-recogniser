@@ -4,7 +4,7 @@ import numpy as np
 from ml import predict_utils
 from PIL import Image
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for
+    Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify
 )
 
 size = [64,64]
@@ -15,10 +15,10 @@ bp = Blueprint('app', __name__, url_prefix='/')
 def draw_base():
     return render_template('draw.html')
 
-@bp.route('/predict', methods=['POST'])
+@bp.route('/_predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
-        draw = request.form['url']
+        draw = request.get_json()
         draw = draw[22:]
         draw_decode = base64.b64decode(draw)
         
@@ -38,10 +38,9 @@ def predict():
         vect = (vect.flatten())
         vect = vect.reshape(1, size[0], size[1])
 
-        final_pred = predict_utils.predict(vect)
+        final_pred, conf = predict_utils.predict(vect)
     
-    return render_template('draw.html', prediction=final_pred)
+        for i in range(5):
+            conf[i] += ": " + final_pred[i]
 
-@bp.route('/clear', methods=['GET'])
-def clear():
-    return render_template('draw.html', prediction=None)
+    return jsonify({'result':final_pred[0], 'top_five': conf})

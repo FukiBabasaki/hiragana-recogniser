@@ -12,7 +12,7 @@ size = [64, 64]
 
 def predict(X):
     """
-    Input: unscailed 1 x 28 x 28 matrix of grey scailed images.
+    Input: unscailed 1 x 54 x 64 matrix of grey scailed images.
     Output: a classified Japanese characters corresponding to the input.
     """
     # X data need to be shaped correctly
@@ -27,7 +27,13 @@ def predict(X):
         os.path.join(PATH_TO_ROOT, 'ml', 'datasets', 'hiragana.csv')
     )
 
-    return label_df['character'][np.argmax(character, axis=1)].tolist()[0]
+    # hiragana = label_df['character'][np.argmax(character, axis=1)].tolist()
+
+    ind = np.argpartition(character[0], -5)[-5:]
+    hiragana = label_df['character'][ind[np.argsort(character[0][ind])][::-1]].tolist()
+    confidence = character[0][ind[np.argsort(character[0][ind])][::-1]]
+
+    return list(hiragana), ['{:.2f}%'.format(i) for i in confidence]
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Hiragana Recogniser App</title>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='draw.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,32 +11,35 @@
   <header>
     <h1>Hiragana Recogniser</h1>
     Convolutional Neural Network is trained on a dataset <a href="http://etlcdb.db.aist.go.jp/specification-of-etl-8">here</a>.
-    The model classifies 70 Japanese characters with more than 95% accuracy.
+    The model classifies 70 Japanese characters with more than 98% accuracy.
   </header>
 
   <body>
-    <form id = "myForm" action="{{ url_for('app.predict')}}" method="POST" enctype="multipart/form-data">
-      <canvas id="canvas", name ="draw" width="420" height="420">
-        <script type="text/javascript">
-              $(document).ready(function() {
-                  drawCanvas();
-              });
-        </script>
-      </canvas>
-      <input type="hidden" id = 'url' name="url" value="">
-
-      <div id = "btn-div">
-        <input type="submit" class = "button" value="Predict" onclick="return save();">
+    <div id = "myForm">
+      <div>
+        <canvas id="canvas", name ="draw" width="420" height="420">
+          <script type="text/javascript">
+                $(document).ready(function() {
+                    drawCanvas();
+                });
+          </script>
+        </canvas>
+        <div id="btn-div">
+          <button class = "button" onclick="save()">Predict</button>
+          <button class = "button" onclick="clearDraw(); return false;">Clear</button>
+        </div>
       </div>
 
-    </form>
+      <input type="hidden" id = 'url' name="url" value="">
+    </div>
 
     <div id="pred">
-      {% if prediction %}
-      <h2>Looks like {{ prediction }} ! </h2>
-      {%else%}
-      <h2>Nothing to predict !</h2>
-    {%endif%}
+      <h2><span id="hiragana">Draw a hiragana and press Predict</span></h2>
+    </div>
+
+    <div id="conf">
+      <h3>Top 5 confidence</h3>
+      <ul id="conf-list"></ul>
     </div>
 
   </body>

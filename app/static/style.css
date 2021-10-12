@@ -8,7 +8,6 @@ header {
     padding: 1.5% 15%;
 }
 
-
 #canvas {
     border: 5px;
     border-style: solid;
@@ -22,24 +21,29 @@ header {
 }
 
 #btn-div {
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 #pred {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#conf {
     position: relative;
     height: 100px;
     padding: 1.5% 15%;
+    /* display: none; */
 }
-
 .button {
     font-size: 2em;
-    margin-top: 30px;
-    display: block;
-    margin-left: 20;
-    margin-right: 20;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top:  30px;
+    margin-left:  50px;
+    margin-right: 50px;
 }
 
 .fa {
