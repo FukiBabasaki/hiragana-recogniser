@@ -3,7 +3,9 @@ Handwritten Japanese Hiragana recognition using a deep convolutional neural netw
 
 [demo](http://3.26.65.5:5000/)
 
-Web app hosted on aws ec2 instance and the model is deployed on sagemaker inference endpoint.
+The app is written in python with flask. Some element is enabled by Javascript. It's hosted on AWS EC2 and the model is deployed on sagemaker inference endpoint.
+
+My model is inspired by this [thesis](http://cs231n.stanford.edu/reports/2016/pdfs/262_Report.pdf).
 
 ## Model description
 
