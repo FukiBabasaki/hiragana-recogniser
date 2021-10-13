@@ -7,7 +7,7 @@ The app is written in python with flask. Some element is enabled by Javascript. 
 
 My model is inspired by this [thesis](http://cs231n.stanford.edu/reports/2016/pdfs/262_Report.pdf) (My model outperforms the model introduced in this thesis by around 2-3% in accuracy).
 
-## Model description
+## Model Configuration
 
 | Type                     | Size    | Activation |
 | ------------------------ | ------- | ---------- |
