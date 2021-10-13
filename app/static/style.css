@@ -6,6 +6,7 @@ header {
     position: relative;
     height: 100px;
     padding: 1.5% 15%;
+    margin-bottom: 10px;
 }
 
 #canvas {
@@ -39,11 +40,27 @@ header {
     padding: 1.5% 15%;
     /* display: none; */
 }
+
 .button {
     font-size: 2em;
     margin-top:  30px;
     margin-left:  50px;
     margin-right: 50px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.button:hover {
+    opacity: 1;
+    transition-duration: 0.4s;
 }
 
 .fa {
