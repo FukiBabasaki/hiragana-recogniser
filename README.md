@@ -28,7 +28,7 @@ This project is inspired by this [thesis](http://cs231n.stanford.edu/reports/201
 - Applied early stopping for when test validation score doesn't improve for 3 epochs in a row.
 - Train data are augmented for better generalisation. (applied rotation and zooming)
 
-| Feature           | [Model V1](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classification.ipynb) | Model V2 | [Model V3](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classificationV2.ipynb) |
+| Feature           | [Model V1](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classification.ipynb) | VGGNet | [VGGNet](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classificationV2.ipynb) |
 | ----------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
 | Test Accuracy     | <= 90%                                                       | <= 98%   | <=  98.88%                                                   |
 | Dataset           | Kuzushiji MNIST                                              | ELT-8    | ELT-8                                                        |
