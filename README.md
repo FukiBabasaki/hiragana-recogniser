@@ -3,6 +3,8 @@ Handwritten Japanese Hiragana recognition using a deep convolutional neural netw
 
 [demo](http://3.26.65.5:5000/)
 
+Web app hosted on aws ec2 instance and the model is deployed on sagemaker inference endpoint.
+
 ## Model description
 
 | Type                     | Size    | Activation |
