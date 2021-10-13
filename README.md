@@ -1,7 +1,7 @@
 # Japanese Hiragana Recogniser
 Handwritten Japanese Hiragana recognition using a deep convolutional neural network. My model follows the framework of [VGGNet](https://arxiv.org/abs/1409.1556) and it performs over 98% accuracy on the test set.
 
-[demo](http://3.26.65.5/)
+[demo](http://www.fukibabasaki.com/hiragana-recogniser)
 
 The app is written in python with flask. Drawing functionality is enabled by Javascript. It's hosted on AWS EC2 and the model is deployed on sagemaker inference endpoint.
 
