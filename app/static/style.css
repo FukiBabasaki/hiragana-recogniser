@@ -9,6 +9,9 @@ header {
     margin-bottom: 10px;
 }
 
+body {
+    padding-bottom: 100px;
+}
 #canvas {
     border: 5px;
     border-style: solid;
