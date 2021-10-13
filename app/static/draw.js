@@ -87,7 +87,7 @@ function save() {
 
     $.ajax({
         type: "POST",
-        url: "/_predict",
+        url: "/hiragana-recogniser/_predict",
         data: JSON.stringify(url.value),
         contentType: "application/json", 
         dataType: 'json',

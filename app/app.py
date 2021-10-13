@@ -11,11 +11,11 @@ size = [64,64]
 
 bp = Blueprint('app', __name__, url_prefix='/')
 
-@bp.route('/', methods = ['GET'])
+@bp.route('/hiragana-recogniser', methods = ['GET'])
 def draw_base():
     return render_template('draw.html')
 
-@bp.route('/_predict', methods=['POST'])
+@bp.route('/hiragana-recogniser/_predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
         draw = request.get_json()
