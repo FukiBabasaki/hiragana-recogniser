@@ -1,7 +1,7 @@
 # Hiragana Recogniser
 Handwritten Japanese Hiragana recognition using a deep convolutional neural network. My model performs over 98% accuracy on the test set.
 
-[demo](http://3.26.65.5:5000/)
+[demo](http://3.26.65.5/)
 
 Web app hosted on aws ec2 instance and the model is deployed on sagemaker inference endpoint.
 
