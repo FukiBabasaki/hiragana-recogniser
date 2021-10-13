@@ -1,7 +1,7 @@
 # Hiragana Recogniser
 Handwritten Japanese Hiragana recognition using a deep convolutional neural network. My model performs over 98% accuracy on the test set.
 
-Live is coming soon...
+[demo](http://3.26.65.5:5000/)
 
 ## Model description
 
