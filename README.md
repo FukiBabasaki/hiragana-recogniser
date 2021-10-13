@@ -1,5 +1,5 @@
 # Hiragana Recogniser
-Handwritten Japanese Hiragana recognition using a deep convolutional neural network. My model performs over 98% accuracy on the test set.
+Handwritten Japanese Hiragana recognition using a deep convolutional neural network. My model follows the framework of [VGGNet](https://arxiv.org/abs/1409.1556) and it performs over 98% accuracy on the test set.
 
 [demo](http://3.26.65.5/)
 
@@ -28,7 +28,7 @@ This project is inspired by this [thesis](http://cs231n.stanford.edu/reports/201
 - Applied early stopping for when test validation score doesn't improve for 3 epochs in a row.
 - Train data are augmented for better generalisation. (applied rotation and zooming)
 
-| Feature           | [Model V1](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classification.ipynb) | VGGNet | [VGGNet](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classificationV2.ipynb) |
+| Feature           | [Custom Sequential](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classification.ipynb) | VGGNet | [VGGNet](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classificationV2.ipynb) |
 | ----------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
 | Test Accuracy     | <= 90%                                                       | <= 98%   | <=  98.88%                                                   |
 | Dataset           | Kuzushiji MNIST                                              | ELT-8    | ELT-8                                                        |
