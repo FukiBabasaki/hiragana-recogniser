@@ -3,9 +3,11 @@ Handwritten Japanese Hiragana recognition using a deep convolutional neural netw
 
 [demo](http://3.26.65.5/)
 
-Web app hosted on aws ec2 instance and the model is deployed on sagemaker inference endpoint.
+The app is written in python with flask. Some element is enabled by Javascript. It's hosted on AWS EC2 and the model is deployed on sagemaker inference endpoint.
 
-## Model description
+My model is inspired by this [thesis](http://cs231n.stanford.edu/reports/2016/pdfs/262_Report.pdf) (My model outperforms the model introduced in this thesis by around 2-3% in accuracy).
+
+## Model Configuration
 
 | Type                     | Size    | Activation |
 | ------------------------ | ------- | ---------- |
@@ -38,6 +40,7 @@ Although test accuracy doesn't really differ between model with augmented images
 
 - The character を is missing from the dataset.
 - Further fine-tune the model.
+- Feature engieering for stroke order (書き順) and number of strokes (画数).
 
 ## Datasets
 
