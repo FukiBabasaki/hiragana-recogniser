@@ -5,13 +5,15 @@ h1 {
 header {
     position: relative;
     height: 100px;
-    padding: 1.5% 15%;
+    padding: 1.5% 20%;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 body {
-    padding-bottom: 100px;
+    padding-bottom: 150px;
 }
+
 #canvas {
     border: 5px;
     border-style: solid;
@@ -38,9 +40,8 @@ body {
 }
 
 #conf {
-    position: relative;
+    text-align: center;
     height: 100px;
-    padding: 1.5% 15%;
     /* display: none; */
 }
 
