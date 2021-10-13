@@ -1,4 +1,4 @@
-import functools, base64, cv2
+import base64
 from io import BytesIO
 import numpy as np
 from ml import predict_utils
@@ -38,7 +38,7 @@ def predict():
         vect = (vect.flatten())
         vect = vect.reshape(1, size[0], size[1])
 
-        final_pred, conf = predict_utils.predict(vect)
+        final_pred, conf = predict_utils.predict(vect, from_cloud=True)
     
         for i in range(5):
             conf[i] += ": " + final_pred[i]
