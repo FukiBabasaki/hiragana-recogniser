@@ -40,6 +40,7 @@ Although test accuracy doesn't really differ between model with augmented images
 
 - The character を is missing from the dataset.
 - Further fine-tune the model.
+- Feature engieering for stroke order (書き順) and number of strokes (画数).
 
 ## Datasets
 
