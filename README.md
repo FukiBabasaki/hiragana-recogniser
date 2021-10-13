@@ -1,11 +1,11 @@
-# Hiragana Recogniser
-Handwritten Japanese Hiragana recognition using a deep convolutional neural network. My model performs over 98% accuracy on the test set.
+# Japanese Hiragana Recogniser
+Handwritten Japanese Hiragana recognition using a deep convolutional neural network. My model follows the framework of [VGGNet](https://arxiv.org/abs/1409.1556) and it performs over 98% accuracy on the test set.
 
 [demo](http://3.26.65.5/)
 
-The app is written in python with flask. Some element is enabled by Javascript. It's hosted on AWS EC2 and the model is deployed on sagemaker inference endpoint.
+The app is written in python with flask. Drawing functionality is enabled by Javascript. It's hosted on AWS EC2 and the model is deployed on sagemaker inference endpoint.
 
-My model is inspired by this [thesis](http://cs231n.stanford.edu/reports/2016/pdfs/262_Report.pdf) (My model outperforms the model introduced in this thesis by around 2-3% in accuracy).
+This project is inspired by this [thesis](http://cs231n.stanford.edu/reports/2016/pdfs/262_Report.pdf). My model outperforms the score presented in this thesis by around 2-3% in test accuracy thanks to data augmentation and other factors.
 
 ## Model Configuration
 
@@ -28,7 +28,7 @@ My model is inspired by this [thesis](http://cs231n.stanford.edu/reports/2016/pd
 - Applied early stopping for when test validation score doesn't improve for 3 epochs in a row.
 - Train data are augmented for better generalisation. (applied rotation and zooming)
 
-| Feature           | [Model V1](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classification.ipynb) | Model V2 | [Model V3](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classificationV2.ipynb) |
+| Feature           | [Custom Sequential](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classification.ipynb) | VGGNet | [VGGNet](https://github.com/Fuki-UoA/hiragana-recogniser/blob/main/ml/hiragana-classificationV2.ipynb) |
 | ----------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
 | Test Accuracy     | <= 90%                                                       | <= 98%   | <=  98.88%                                                   |
 | Dataset           | Kuzushiji MNIST                                              | ELT-8    | ELT-8                                                        |
@@ -48,8 +48,6 @@ Although test accuracy doesn't really differ between model with augmented images
 
 **Dataset**: [ELT-8: ELTDB](http://etlcdb.db.aist.go.jp/specification-of-etl-8)
 
-**Citation**: 森俊二、山本和彦、山田博三、斉藤泰一: “手書教育漢字のデータベースについて”, 「電総研彙報」, Vol.43, Nos.11&12, pp.752–773 (1979-11&12).
-
 **Description:** Classification of handwritten Japanese character, 72 classes (五十音順).
 
 **Training & Testing:** 11.5k 128x127 instances.
@@ -57,8 +55,6 @@ Although test accuracy doesn't really differ between model with augmented images
 ### Secondary 
 
 **Dataset**: [Kuzushiji MNIST](https://github.com/rois-codh/kmnist)
-
-**Citation**: "KMNIST Dataset" (created by CODH), adapted from "Kuzushiji Dataset" (created by NIJL and others), doi:10.20676/00000341
 
 **Description:** Classification of handwritten Japanese character, 49 classes (五十音順).
 
@@ -68,3 +64,13 @@ Although test accuracy doesn't really differ between model with augmented images
 
 - This dataset did not work well as each instance was only 28 x 28 pixels image and this app takes 400 x 400 pixels image of handwritten Hiragana from the user. Resizing from 400 x 400 to 28 x 28 seems to lose significant amount of information.
 - Hence, my model performed reasonably well on the dataset (achieving over 90% accuracy on test set) but performance on the app wasn't great.
+
+## References
+
+Simonyan, Karen, and Andrew Zisserman. "Very deep convolutional networks for large-scale image recognition." arXiv preprint arXiv:1409.1556 (2014).
+
+Tsai, Charlie. "Recognizing handwritten Japanese characters using deep convolutional neural networks." University of Stanford in Stanford, California (2016): 405-410.
+
+森俊二、山本和彦、山田博三、斉藤泰一: “手書教育漢字のデータベースについて”, 「電総研彙報」, Vol.43, Nos.11&12, pp.752–773 (1979-11&12).
+
+"KMNIST Dataset" (created by CODH), adapted from "Kuzushiji Dataset" (created by NIJL and others), doi:10.20676/00000341
