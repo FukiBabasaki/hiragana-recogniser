@@ -10,20 +10,12 @@ from flask import (
 size = [64,64]
 
 bp = Blueprint('app', __name__, url_prefix='/')
-
-@bp.route('/', methods=['GET'])
-def get_base():
-    return render_template('base.html')
-
-@bp.route('/projects', methods=['GET'])
-def get_projects():
-    return render_template('projects.html')
     
-@bp.route('/projects/hiragana-recogniser', methods = ['GET'])
+@bp.route('/', methods = ['GET'])
 def draw_base():
     return render_template('draw.html')
 
-@bp.route('/projects/hiragana-recogniser/_predict', methods=['POST'])
+@bp.route('/_predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
         draw = request.get_json()
