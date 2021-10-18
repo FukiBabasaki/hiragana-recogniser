@@ -11,6 +11,11 @@ var curColor = "#000000";
 **/
 function drawCanvas() {
     canvas = document.getElementById('canvas');
+    
+    side = Math.min(window.innerWidth, window.innerHeight, 420)
+    canvas.width = side;
+    canvas.height = side;
+
     context = canvas.getContext("2d");
 
     $('#canvas').mousedown(function (e) {
@@ -32,6 +37,8 @@ function drawCanvas() {
     $('#canvas').mouseup(function (e) {
         paint = false;
     });
+
+    window.addEventListener('resize', resizeCanvas, false);
 }
 
 /**
@@ -72,6 +79,7 @@ function clearDraw() {
 }
 
 
+
 /**
     - Encodes the image into a base 64 string.
     - Add the string to an hidden tag of the form so Flask can reach it.
@@ -87,7 +95,7 @@ function save() {
 
     $.ajax({
         type: "POST",
-        url: "/hiragana-recogniser/_predict",
+        url: "/projects/hiragana-recogniser/_predict",
         data: JSON.stringify(url.value),
         contentType: "application/json", 
         dataType: 'json',
@@ -107,4 +115,12 @@ function save() {
             )
         }
     });
+}
+
+function resizeCanvas() {
+    canvas = document.getElementById('canvas');
+    
+    side = Math.min(window.innerWidth - 30, window.innerHeight - 30, 420)
+    canvas.width = side;
+    canvas.height = side;
 }

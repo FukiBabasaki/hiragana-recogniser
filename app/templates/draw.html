@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='draw.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=no">
   </head>
 
   <header>
@@ -17,7 +18,7 @@
   <body>
     <div id = "myForm">
       <div>
-        <canvas id="canvas", name ="draw" width="420" height="420">
+        <canvas id="canvas", name ="draw">
           <script type="text/javascript">
                 $(document).ready(function() {
                     drawCanvas();
@@ -26,7 +27,7 @@
         </canvas>
         <div id="btn-div">
           <button class = "button" onclick="clearDraw(); return false;" style="background-color: #f44336;">Clear</button>
-          <button class = "button" onclick="save()" style="background-color: #4CAF50;">Predict</button>
+          <button class = "button" onclick="save()" style="background-color: #007bb5;">Predict</button>
         </div>
       </div>
 
@@ -40,12 +41,6 @@
     <div id="conf">
       <h3>Top 5 confidence</h3>
       <ul id="conf-list"></ul>
-    </div>
-    
-    <div class="footer">
-      <a href="https://github.com/Fuki-UoA/hiragana-recogniser" class="fa fa-github"></a>
-      <a href="https://www.linkedin.com/in/fuki/" class="fa fa-linkedin"></i>
-      </a>
     </div>
   </body>
 </html>
