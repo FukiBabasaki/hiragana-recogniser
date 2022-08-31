@@ -17,6 +17,7 @@ function drawCanvas() {
     canvas.height = side;
 
     context = canvas.getContext("2d");
+    context.fillStyle = "rgb(200,0,0)";
 
     $('#canvas').mousedown(function (e) {
         var mouseX = e.pageX - this.offsetLeft;
@@ -85,20 +86,14 @@ function clearDraw() {
     - Add the string to an hidden tag of the form so Flask can reach it.
 **/
 function save() {
-    var image = new Image();
-    var url = document.getElementById('url');
-    image.id = "pic";
-    image.src = canvas.toDataURL();
-    url.value = image.src;
 
     var hiragana = document.getElementById("hiragana");
 
     $.ajax({
         type: "POST",
-        url: "/_predict",
-        data: JSON.stringify(url.value),
-        contentType: "application/json", 
-        dataType: 'json',
+        url: "/predict",
+        data: JSON.stringify(canvas.toDataURL("image/png", 1.0)),
+        contentType: "application/json",
         success: function(result) {
             hiragana.innerHTML = "Predicted " + result.result +" !";
 
